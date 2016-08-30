@@ -12,9 +12,18 @@ import java.awt.List;
  * @author fabia
  */
 public class Bloco {
+    private Integer id;
     private String descricao;
     private FundoAgricola fundoAgricola;
     private List talhao;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getDescricao() {
         return descricao;

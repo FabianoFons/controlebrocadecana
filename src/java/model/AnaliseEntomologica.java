@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author fabia
  */
 public class AnaliseEntomologica {
+    private Integer id;
     private Variedade variedade;
     private Talhao talhao;
     private Integer corte;
@@ -26,6 +27,14 @@ public class AnaliseEntomologica {
     private Integer brocaGrande;
     private Integer crisalida;
     private Integer pupas;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Variedade getVariedade() {
         return variedade;

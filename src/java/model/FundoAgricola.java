@@ -10,8 +10,17 @@ package model;
  * @author fabia
  */
 public class FundoAgricola {
+    private Integer id;
     private String nome;
     private String identificacao;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

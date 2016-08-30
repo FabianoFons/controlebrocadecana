@@ -13,10 +13,19 @@ import javafx.scene.chart.PieChart;
  * @author fabia
  */
 public class Talhao {
+    private Integer id;
     private String identificacao;
     private String area;
     private Date data;
     private Variedade variedade;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getIdentificacao() {
         return identificacao;
