@@ -33,7 +33,14 @@ public class CadastroTalhaoController {
         this.talhao = talhao;
     }
 
-        
+    public List<Talhao> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Talhao> lista) {
+        this.lista = lista;
+    }    
+           
     public CadastroTalhaoController() {
     }
     

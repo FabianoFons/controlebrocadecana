@@ -14,19 +14,17 @@
         </h:form>
         <h:form id="form">
             <p:panel header="Cadastro de Variedade">
-                <h:panelGrid columns="1" cellpadding="5">
-                    
-                     <h:outputLabel for="identificacao" value="Identificação:" />
-                     <p:inputText id="identificacao" value="#{cadastroVariedadeController.variedade.id}" label="Identificação"
-                                 required="true"
-                                 requiredMessage="Informe a Identificação"/>
-                    <p:message for="identificacao" />
-                    
-                    <h:outputLabel for="variedade" value="Nome Variedade:" />
-                    <p:inputText id="variedade" value="#{cadastroVariedadeController.variedade.nome}" label="Variedade"
+                <h:panelGrid columns="1" cellpadding="5"> 
+                    <h:outputLabel value="Talhões"/>
+                    <p:selectOneMenu>
+                        
+                    </p:selectOneMenu>
+                                       
+                    <h:outputLabel for="nome" value="Nome Variedade:" />
+                    <p:inputText id="nome" value="#{cadastroVariedadeController.variedade.nome}" label="Nome"
                                  required="true"
                                  requiredMessage="Informe a Variedade"/>
-                    <p:message for="variedade" />
+                    <p:message for="nome" />
                 </h:panelGrid>
 
                 <p:commandButton value="Salvar" ajax="false" icon="ui-icon-check" validateClient="true"
@@ -38,17 +36,14 @@
             <p:dataTable value="#{cadastroVariedadeController.lista}" var="variedade"
                          paginator="true"
                          rows="10">
-                <p:column headerText="Código">
-                    <p:outputLabel value="#{variedade.id}"/>
-                </p:column>             
-                
-                <p:column headerText="Variedade" filterBy="#{variedade.nome}" filterMatchMode="contains">
+                               
+                <p:column headerText="Nome" filterBy="#{variedade.nome}" filterMatchMode="contains">
                     <p:outputLabel value="#{variedade.nome}"/>
                 </p:column>             
                 
                 <p:column headerText="Opções">
-                    <p:commandButton value="Excluir" action="#{cadastroVariedadeController.excluir(fazenda)}" update=":grid"/>
-                    <p:commandButton value="Alterar" action="#{cadastroVariedadeController.alterar(fazenda)}" update=":form"/>
+                    <p:commandButton value="Excluir" action="#{cadastroVariedadeController.excluir(variedade)}" update=":grid"/>
+                    <p:commandButton value="Alterar" action="#{cadastroVariedadeController.alterar(variedade)}" update=":form"/>
                 </p:column>  
                 
             </p:dataTable>
