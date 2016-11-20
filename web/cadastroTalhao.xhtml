@@ -13,7 +13,7 @@
             <p:commandButton value="Voltar" action="#{cadastroFazendaController.voltar()}"/>
         </h:form>
         <h:form id="form">
-            <p:panel header="Cadstro de Talhões">
+            <p:panel header="Cadastro de Talhões">
                 <h:panelGrid columns="1" cellpadding="5">
                     
                     <h:outputLabel value="Fazendas"/>
@@ -22,7 +22,7 @@
                     </p:selectOneMenu>
                     
                     <h:outputLabel for="identificacao" value="Identificação:" />
-                    <p:inputText id="identificacao" value="#{cadastroFazendaController.fundoAgricola.identificacao}" label="Identificação"
+                    <p:inputText id="identificacao" value="#{cadastroTalhaoController.talhao.identificacao}" label="Identificação"
                                  required="true"
                                  requiredMessage="Informe a Identificação"/>
                     <p:message for="identificacao" />
@@ -52,6 +52,10 @@
                 <p:column headerText="Código">
                     <p:outputLabel value="#{talhao.id}"/>
                 </p:column>
+                
+                <p:column headerText="Fazendas" filterBy="#{fundoAgricola.identificacao}" filterMatchMode="contains">
+                    <p:outputLabel value="#{fundoAgricola.identificacao}"/>
+                </p:column>  
 
                 <p:column headerText="Identificação" filterBy="#{talhao.identificacao}" filterMatchMode="contains">
                     <p:outputLabel value="#{talhao.identificacao}"/>
@@ -66,8 +70,8 @@
                 </p:column>
                 
                 <p:column headerText="Opções">
-                    <p:commandButton value="Excluir" action="#{cadastroTalhaoController.excluir(fazenda)}" update=":grid"/>
-                    <p:commandButton value="Alterar" action="#{cadastroTalhaoController.alterar(fazenda)}" update=":form"/>
+                    <p:commandButton value="Excluir" action="#{cadastroTalhaoController.excluir(talhao)}" update=":grid"/>
+                    <p:commandButton value="Alterar" action="#{cadastroTalhaoController.alterar(talhao)}" update=":form"/>
                 </p:column>  
                 
             </p:dataTable>

@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "variedade")
-public class Variedade {
+public class Variedade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -44,7 +45,7 @@ public class Variedade {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+  
     public List<Talhao> getTalhoes() {
         return talhoes;
     }

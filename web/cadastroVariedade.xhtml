@@ -5,6 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    
     <h:head>
         <title>Cadastro de Variedade</title>
     </h:head>
@@ -20,26 +22,32 @@
                         
                     </p:selectOneMenu>
                                        
-                    <h:outputLabel for="nome" value="Nome Variedade:" />
+                    <h:outputLabel for="nome" value="Variedade:" />
                     <p:inputText id="nome" value="#{cadastroVariedadeController.variedade.nome}" label="Nome"
                                  required="true"
                                  requiredMessage="Informe a Variedade"/>
                     <p:message for="nome" />
+                    
                 </h:panelGrid>
 
-                <p:commandButton value="Salvar" ajax="false" icon="ui-icon-check" validateClient="true"
-                                 action="#{cadastroVariedadeController.salvar()}" update=":grid"/>
+                <p:commandButton value="Salvar" icon="ui-icon-check" validateClient="true"
+                                 action="#{cadastroVariedadeController.salvar()}" update=":grid,:form"/>
             </p:panel>
         </h:form>
+        
         
         <h:form id="grid">
             <p:dataTable value="#{cadastroVariedadeController.lista}" var="variedade"
                          paginator="true"
                          rows="10">
                                
-                <p:column headerText="Nome" filterBy="#{variedade.nome}" filterMatchMode="contains">
+                <p:column headerText="Variedade" filterBy="#{variedade.nome}">
                     <p:outputLabel value="#{variedade.nome}"/>
-                </p:column>             
+                </p:column>
+                
+                <p:column headerText="Talhao" filterBy="#{variedade.talhoes}">
+                    <p:outputLabel value="#{variedade.talhoes}"/>
+                </p:column>      
                 
                 <p:column headerText="Opções">
                     <p:commandButton value="Excluir" action="#{cadastroVariedadeController.excluir(variedade)}" update=":grid"/>

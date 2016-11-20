@@ -51,8 +51,14 @@ public class CadastroTalhaoController {
     
     public void salvar(){
         DaoTalhao daoTalhao = new DaoTalhao();
-        daoTalhao.inserir(this.talhao);
-        
+        if (this.talhao.getId() == null){
+            daoTalhao.inserir(this.talhao);
+            this.lista.add(talhao);
+        }else{
+            daoTalhao.atualizar(this.talhao);
+            int index = this.lista.indexOf(this.talhao);
+            this.lista.set(index, this.talhao);
+        }        
     }
     
     public void excluir(Talhao talhao){

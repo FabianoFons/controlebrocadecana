@@ -31,7 +31,7 @@ public class Talhao{
     private Integer id;
     private String identificacao;
     private String area;
-    private Date data;
+    private String data;
     @ManyToOne
     @JoinColumn(name = "idvariedade")
     private Variedade variedade;
@@ -68,11 +68,11 @@ public class Talhao{
         this.area = area;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 
 
@@ -23,8 +25,8 @@ import javax.annotation.PostConstruct;
  *
  * @author Fabiano
  */
-@Named(value = "cadastroVariedadeController")
-@Dependent
+@ManagedBean(name = "cadastroVariedadeController")
+@SessionScoped
 public class CadastroVariedadeController {
     private Variedade variedade;
     private List<Variedade> lista;
@@ -39,14 +41,7 @@ public class CadastroVariedadeController {
         lista = daoVariedade.listar();
     }
 
-    public Variedade getVariedade() {
-        return variedade;
-    }
-
-    public void setVariedade(Variedade variedade) {
-        this.variedade = variedade;
-    }
-
+    
     public List<Variedade> getLista() {
         return lista;
     }
@@ -54,7 +49,7 @@ public class CadastroVariedadeController {
     public void setLista(List<Variedade> lista) {
         this.lista = lista;
     }    
-        
+            
     public void salvar(){
         DaoVariedade daoVariedade = new DaoVariedade();
         if (this.variedade.getId() == null){
@@ -85,4 +80,14 @@ public class CadastroVariedadeController {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public Variedade getVariedade() {
+        return variedade;
+    }
+
+    public void setVariedade(Variedade variedade) {
+        this.variedade = variedade;
+    }
+    
+    
 }
