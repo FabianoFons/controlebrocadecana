@@ -5,7 +5,8 @@
  */
 package model;
 
-import java.sql.Date;
+import com.google.gson.annotations.Expose;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,10 +29,16 @@ import java.util.List;
 public class Talhao{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Expose
     private Integer id;
+    @Expose
     private String identificacao;
+    @Expose
     private String area;
-    private String data;
+    @Expose
+    private Date data;
+    @Expose
+    private String bloco;
     @ManyToOne
     @JoinColumn(name = "idvariedade")
     private Variedade variedade;
@@ -41,8 +48,6 @@ public class Talhao{
     
     @OneToMany(mappedBy = "talhao")
     private List<AnaliseEntomologica> analises = new ArrayList<AnaliseEntomologica>();
-    
-    private String bloco;
 
     public Integer getId() {
         return id;
@@ -68,11 +73,11 @@ public class Talhao{
         this.area = area;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

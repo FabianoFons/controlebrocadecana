@@ -5,6 +5,7 @@
  */
 package model;
 
+import com.google.gson.annotations.Expose;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -25,8 +26,11 @@ import javax.persistence.OneToMany;
 public class FundoAgricola {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Expose
     private Integer id;
+    @Expose
     private String nome;
+    @Expose
     private String identificacao;
     
     @OneToMany(mappedBy = "fundoAgricola")
@@ -62,6 +66,31 @@ public class FundoAgricola {
 
     public void setTalhoes(List<Talhao> talhoes) {
         this.talhoes = talhoes;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FundoAgricola other = (FundoAgricola) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
     

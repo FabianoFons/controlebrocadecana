@@ -5,73 +5,81 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    
     <h:head>
-        <title>Cadastro de Talhão</title>
+        <title>Cadastro de Variedade</title>
     </h:head>
     <h:body>
         <h:form>
-            <p:commandButton value="Voltar" action="#{cadastroFazendaController.voltar()}"/>
+            <p:commandButton value="Voltar" action="#{cadastroTalhaoController.voltar()}"/>
         </h:form>
         <h:form id="form">
-            <p:panel header="Cadastro de Talhões">
-                <h:panelGrid columns="1" cellpadding="5">
+            <p:panel header="Cadastro de Talhão">
+                <h:panelGrid columns="1" cellpadding="5"> 
                     
-                    <h:outputLabel value="Fazendas"/>
-                    <p:selectOneMenu>
-                        
+                    <h:outputLabel value="Fundos Agricolas"/>
+                    <p:selectOneMenu id="fa" value="#{cadastroTalhaoController.talhao.fundoAgricola}" required="true"
+                                     requiredMessage="Informe o Talhão"
+                                     converter="FazendaConverter"> 
+                        <f:selectItems value="#{cadastroTalhaoController.fas}" var="f" 
+                                       itemLabel="#{f.descricao}" itemValue="#{f}"/>                        
                     </p:selectOneMenu>
+                    <p:message for="fa" />
+                                        
+                    <h:outputLabel value="Variedades"/>
+                    <p:selectOneMenu id="va" value="#{cadastroTalhaoController.talhao.variedade}" required="true"
+                                     requiredMessage="Informe a Variedade"
+                                     converter="VariedadeConverter"> 
+                        <f:selectItems value="#{cadastroTalhaoController.variedades}" var="v" 
+                                       itemLabel="#{v.descricao}" itemValue="#{v}"/>                        
+                    </p:selectOneMenu>
+                    <p:message for="va" />
                     
-                    <h:outputLabel for="identificacao" value="Identificação:" />
-                    <p:inputText id="identificacao" value="#{cadastroTalhaoController.talhao.identificacao}" label="Identificação"
-                                 required="true"
-                                 requiredMessage="Informe a Identificação"/>
-                    <p:message for="identificacao" />
+                    <h:outputLabel value="Identificação"/>
+                    <p:inputText value="#{cadastroTalhaoController.talhao.identificacao}"/>
+
+                    <h:outputLabel value="Área"/>
+                    <p:inputText value="#{cadastroTalhaoController.talhao.area}"/>
                     
-                    <h:outputLabel for="area" value="Área:" />
-                    <p:inputText id="area" value="#{cadastroTalhaoController.talhao.area}" label="Area"
-                                 required="true"
-                                 requiredMessage="Informe a Área"/>
-                    <p:message for="area" />
+                    <h:outputLabel value="Data"/>
+                    <p:calendar value="#{cadastroTalhaoController.talhao.data}"/>
                     
-                    <h:outputLabel for="data" value="Data:" />
-                    <p:inputText id="data" value="#{cadastroTalhaoController.talhao.data}" label="Data"
-                                 required="true"
-                                 requiredMessage="Informe a Data"/>
-                    <p:message for="data" />
+                    <h:outputLabel value="Bloco"/>
+                    <p:inputText value="#{cadastroTalhaoController.talhao.bloco}"/>                    
+                    
                 </h:panelGrid>
 
-                <p:commandButton value="Salvar" ajax="false" icon="ui-icon-check" validateClient="true"
-                                 action="#{cadastroFazendaController.salvar()}" update=":grid"/>
+                <p:commandButton value="Salvar" icon="ui-icon-check" validateClient="true"
+                                 action="#{cadastroTalhaoController.salvar()}" update=":grid,:form"/>
             </p:panel>
         </h:form>
         
+        
         <h:form id="grid">
-            <p:dataTable value="#{cadastroTalhaoController.lista}" var="talhao"
+            <p:dataTable value="#{cadastroTalhaoController.lista}" var="ta"
                          paginator="true"
                          rows="10">
+                
                 <p:column headerText="Código">
-                    <p:outputLabel value="#{talhao.id}"/>
+                    <p:outputLabel value="#{ta.id}"/>
+                </p:column>
+                               
+                <p:column headerText="Identificação" filterBy="#{ta.identificacao}">
+                    <p:outputLabel value="#{ta.identificacao}"/>
                 </p:column>
                 
-                <p:column headerText="Fazendas" filterBy="#{fundoAgricola.identificacao}" filterMatchMode="contains">
-                    <p:outputLabel value="#{fundoAgricola.identificacao}"/>
-                </p:column>  
+                <p:column headerText="Área" filterBy="#{ta.area}">
+                    <p:outputLabel value="#{ta.area}"/>
+                </p:column>      
 
-                <p:column headerText="Identificação" filterBy="#{talhao.identificacao}" filterMatchMode="contains">
-                    <p:outputLabel value="#{talhao.identificacao}"/>
-                </p:column>                 
-                
-                <p:column headerText="Nome" filterBy="#{talhao.nome}" filterMatchMode="contains">
-                    <p:outputLabel value="#{talhao.nome}"/>
-                </p:column>     
-                
-                <p:column headerText="Data" filterBy="#{talhao.data}" filterMatchMode="contains">
-                    <p:outputLabel value="#{talhao.data}"/>
-                </p:column>
+                <p:column headerText="Data" filterBy="#{ta.data}">
+                    <p:outputLabel value="#{ta.data}"/>
+                </p:column>      
                 
                 <p:column headerText="Opções">
-                    <p:commandButton value="Excluir" action="#{cadastroTalhaoController.excluir(talhao)}" update=":grid"/>
-                    <p:commandButton value="Alterar" action="#{cadastroTalhaoController.alterar(talhao)}" update=":form"/>
+                    <p:commandButton value="Excluir" action="#{cadastroTalhaoController.excluir(ta)}" update=":grid"/>
+                    <p:commandButton value="Alterar" action="#{cadastroTalhaoController.alterar(ta)}" update=":form"/>
                 </p:column>  
                 
             </p:dataTable>

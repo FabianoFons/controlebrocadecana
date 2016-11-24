@@ -17,10 +17,6 @@
         <h:form id="form">
             <p:panel header="Cadastro de Variedade">
                 <h:panelGrid columns="1" cellpadding="5"> 
-                    <h:outputLabel value="Talhões"/>
-                    <p:selectOneMenu>
-                        
-                    </p:selectOneMenu>
                                        
                     <h:outputLabel for="nome" value="Variedade:" />
                     <p:inputText id="nome" value="#{cadastroVariedadeController.variedade.nome}" label="Nome"
@@ -40,14 +36,15 @@
             <p:dataTable value="#{cadastroVariedadeController.lista}" var="variedade"
                          paginator="true"
                          rows="10">
+                
+                <p:column headerText="Código">
+                    <p:outputLabel value="#{variedade.id}"/>
+                </p:column>
                                
                 <p:column headerText="Variedade" filterBy="#{variedade.nome}">
                     <p:outputLabel value="#{variedade.nome}"/>
                 </p:column>
-                
-                <p:column headerText="Talhao" filterBy="#{variedade.talhoes}">
-                    <p:outputLabel value="#{variedade.talhoes}"/>
-                </p:column>      
+                     
                 
                 <p:column headerText="Opções">
                     <p:commandButton value="Excluir" action="#{cadastroVariedadeController.excluir(variedade)}" update=":grid"/>

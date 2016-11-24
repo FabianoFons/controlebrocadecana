@@ -24,7 +24,7 @@ import model.FundoAgricola;
 @ManagedBean(name = "cadastroFazendaController")
 @SessionScoped
 public class CadastroFazendaController {
-    private FundoAgricola usuario;
+    private FundoAgricola fundoAgricola;
     private List<FundoAgricola> lista;
     /**
      * Creates a new instance of CadastroAmostradorController
@@ -34,30 +34,30 @@ public class CadastroFazendaController {
     
     @PostConstruct
     public void init(){
-        usuario = new FundoAgricola();
+        fundoAgricola = new FundoAgricola();
         DaoFazenda daoFundoAgricola = new DaoFazenda();
         lista = daoFundoAgricola.listar();
     }
 
     public FundoAgricola getFundoAgricola() {
-        return usuario;
+        return fundoAgricola;
     }
 
-    public void setFundoAgricola(FundoAgricola usuario) {
-        this.usuario = usuario;
+    public void setFundoAgricola(FundoAgricola fundoAgricola) {
+        this.fundoAgricola = fundoAgricola;
     }
     
     public void salvar(){
         DaoFazenda daoFundoAgricola = new DaoFazenda();
-        if (this.usuario.getId() == null){
-            daoFundoAgricola.inserir(this.usuario);
-            this.lista.add(usuario);
+        if (this.fundoAgricola.getId() == null){
+            daoFundoAgricola.inserir(this.fundoAgricola);
+            this.lista.add(fundoAgricola);
         }else{
-            daoFundoAgricola.atualizar(this.usuario);
-            int index = this.lista.indexOf(this.usuario);
-            this.lista.set(index, this.usuario);
+            daoFundoAgricola.atualizar(this.fundoAgricola);
+            int index = this.lista.indexOf(this.fundoAgricola);
+            this.lista.set(index, this.fundoAgricola);
         }
-        this.usuario = new FundoAgricola();
+        this.fundoAgricola = new FundoAgricola();
     }
 
     public List<FundoAgricola> getLista() {
@@ -74,8 +74,8 @@ public class CadastroFazendaController {
         this.lista.remove(usuario);
     }
     
-    public void alterar(FundoAgricola usuario){
-        this.usuario = usuario;
+    public void alterar(FundoAgricola fundoAgricola){
+        this.fundoAgricola = fundoAgricola;
     }
     
     public void voltar(){

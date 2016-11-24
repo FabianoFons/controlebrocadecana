@@ -28,4 +28,19 @@ public class DaoFazenda extends Dao{
             return lista;
         }
     }
+     
+    public Object getById(Integer id){
+        Session session = dao.HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        FundoAgricola fundoAgricola = null;
+        try{
+            fundoAgricola = (FundoAgricola) session.get(FundoAgricola.class, id);
+            t.commit();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            t.rollback();
+        }finally{
+            return fundoAgricola;
+        }
+    }     
 }
