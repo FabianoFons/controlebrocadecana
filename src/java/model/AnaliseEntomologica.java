@@ -6,7 +6,7 @@
 package model;
 
 import com.google.gson.annotations.Expose;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -31,6 +32,7 @@ public class AnaliseEntomologica {
     @JoinColumn(name = "idtalhao")
     private Talhao talhao;
     private Integer corte;
+    @Expose
     private Date dataAnalise;
     private Float longitude;
     private Float latitude;
@@ -152,6 +154,7 @@ public class AnaliseEntomologica {
     public void setPupas(Integer pupas) {
         this.pupas = pupas;
     }
+    
     
     
 }

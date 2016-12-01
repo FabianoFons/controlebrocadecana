@@ -12,72 +12,74 @@
         <h:form>
             <p:commandButton value="Voltar" action="#{cadastroAnaliseEntomologicaController.voltar()}"/>
         </h:form>
+        
         <h:form id="form">
             <p:panel header="Cadastro de Análise Entomológica">
                 <h:panelGrid columns="1" cellpadding="5">
                     
-                     <h:outputLabel value="Talhao"/>
-                     <p:selectOneMenu id="ta" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.talhao}" required="true"
-                                     requiredMessage="Informe o Talhão"
-                                     converter="FazendaConverter"> 
-                         <f:selectItems value="#{cadastroAnaliseEntomologicaController.ana}" var="a" 
-                                        itemLabel="#{a.descricao}" itemValue="#{a}"/>                      
+                    <h:outputLabel value="Talhão"/>
+                    <p:selectOneMenu id="ana" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.talhao}" required="true"
+                                     requiredMessage="Informe o Talhao"
+                                     converter="TalhaoConverter"> 
+                        <f:selectItems value="#{cadastroAnaliseEntomologicaController.ana}" var="t" 
+                                       itemLabel="#{t.descricao}" itemValue="#{t}"/>                        
                     </p:selectOneMenu>
-                    <p:message for="fa" />
                     
-                    <h:outputLabel for="longitude" value="Longitude:" />
-                    <p:inputText id="longitude" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.longitude}" label="longitude"
-                                 required="true"
-                                 requiredMessage="Informe a Longitude"/>
-                    <p:message for="longitude" />
+                    <h:outputLabel value="Data de Análise" />
+                    <p:calendar value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.dataAnalise}" label="dataAnalise"
+                                 requiredMessage="Informe a Data da Análise"/>
+                    
+                    
                     
                     <h:outputLabel for="latitude" value="Latitude:" />
                     <p:inputText id="latitude" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.latitude}" label="latitude"
                                  required="true"
                                  requiredMessage="Informe a Latitude"/>
-                    <p:message for="latitude" />
                     
-                    <h:outputLabel for="brocagrande" value="Broca Grande:" />
-                    <p:inputText id="brocagrande" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.brocaGrande}" label="brocagrande"
+                    <h:outputLabel for="longitude" value="Longitude:" />
+                    <p:inputText id="longitude" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.longitude}" label="longitude"
                                  required="true"
+                                 requiredMessage="Informe a Longitude"/>
+                    
+                    <h:outputLabel value="Corte:" />
+                    <p:inputText value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.corte}" label="corte"
+                                 requiredMessage="Informe o Corte"/>
+                   
+                    
+                    <h:outputLabel value="Broca Grande:" />
+                    <p:inputText value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.brocaGrande}" label="brocagrande"
                                  requiredMessage="Informe a Quantidade de Broca Grande"/>
-                    <p:message for="brocagrande" />
                     
-                    <h:outputLabel for="brocapequena" value="Broca Pequena:" />
-                    <p:inputText id="brocapequena" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.brocaPequena}" label="brocapequena"
-                                 required="true"
+                    
+                    <h:outputLabel  value="Broca Pequena:" />
+                    <p:inputText value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.brocaPequena}" 
                                  requiredMessage="Informe a Quantidade de Broca Pequena"/>
-                    <p:message for="brocapequena" />
                     
-                    <h:outputLabel for="crisalida" value="Crisálidas:" />
-                    <p:inputText id="crisalida" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.crisalida}" label="crisalida"
-                                 required="true"
+                    
+                    <h:outputLabel value="Crisálidas:" />
+                    <p:inputText  value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.crisalida}"
                                  requiredMessage="Informe a Quantidade de Crisálidas"/>
-                    <p:message for="crisalida" />
                     
-                    <h:outputLabel for="pupas" value="Pupas:" />
-                    <p:inputText id="pupas" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.pupas}" label="pupas"
-                                 required="true"
+                    
+                    <h:outputLabel value="Pupas:" />
+                    <p:inputText value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.pupas}" 
                                  requiredMessage="Informe a Quantidade de Pupas"/>
-                    <p:message for="pupas" />
                     
-                    <h:outputLabel for="totalnos" value="Total de Nós:" />
-                    <p:inputText id="totalnos" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.totalNos}" label="totalnos"
-                                 required="true"
+                    
+                    <h:outputLabel value="Total de Nós:" />
+                    <p:inputText value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.totalNos}" 
                                  requiredMessage="Informe o Total de Nós"/>
-                    <p:message for="totalnos" />
                     
-                    <h:outputLabel for="brocados" value="Brocados:" />
-                    <p:inputText id="brocados" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.brocados}" label="brocados"
-                                 required="true"
+                    
+                    <h:outputLabel value="Brocados:" />
+                    <p:inputText id="brocados" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.brocados}" 
                                  requiredMessage="Informe a Quantidade de Brocados"/>
-                    <p:message for="brocados" />
                     
-                    <h:outputLabel for="podridaovermelha" value="Podridão Vermelha:" />
-                    <p:inputText id="podridaovermelha" value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.podridaoVermelha}" label="podridaovermelha"
-                                 required="true"
+                    
+                    <h:outputLabel  value="Podridão Vermelha:" />
+                    <p:inputText value="#{cadastroAnaliseEntomologicaController.analiseEntomologica.podridaoVermelha}" 
                                  requiredMessage="Informe a Quantidade de Podridão Vermelha"/>
-                    <p:message for="podridaovermelha" />
+                   
                     
                     
                 </h:panelGrid>
@@ -88,39 +90,55 @@
         </h:form>
         
         <h:form id="grid">
-            <p:dataTable value="#{cadastroAnaliseEntomologicaController.lista}" var="analiseentomologica"
+            <p:dataTable value="#{cadastroAnaliseEntomologicaController.lista}" var="ana"
                          paginator="true"
                          rows="10">
                 <p:column headerText="Código">
-                    <p:outputLabel value="#{analiseentomologica.id}"/>
+                    <p:outputLabel value="#{ana.id}"/>
+                </p:column>
+                
+                <p:column headerText="DataAnalise" filterMatchMode="contains">
+                    <p:inputText value="#{ana.dataAnalise}"/>
+                </p:column>
+                
+                 <p:column headerText="Talhao" filterMatchMode="contains">
+                     <p:inputText value="#{ana.talhao}"/>
+                </p:column>
+                
+                <p:column headerText="Latitude" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.latitude}"/>
+                </p:column>
+                
+                <p:column headerText="Longitude" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.longitude}"/>
                 </p:column>
 
-                <p:column headerText="Broca Grande" filterBy="#{analiseentomologica.brocaGrande}" filterMatchMode="contains">
-                    <p:outputLabel value="#{analiseentomologica.brocaGrande}"/>
+                <p:column headerText="Broca Grande" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.brocaGrande}"/>
                 </p:column>                 
                 
-                <p:column headerText="Broca Pequena" filterBy="#{analiseentomologica.brocaPequena}" filterMatchMode="contains">
+                <p:column headerText="Broca Pequena" filterMatchMode="contains">
                     <p:outputLabel value="#{analiseentomologica.brocaPequena}"/>
                 </p:column>   
                 
-                <p:column headerText="Crisálidas" filterBy="#{analiseentomologica.crisalida}" filterMatchMode="contains">
-                    <p:outputLabel value="#{analiseentomologica.crisalida}"/>
+                <p:column headerText="Crisálidas" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.crisalida}"/>
                 </p:column>  
                 
-                <p:column headerText="Pupas" filterBy="#{analiseentomologica.pupas}" filterMatchMode="contains">
-                    <p:outputLabel value="#{analiseentomologica.pupas}"/>
+                <p:column headerText="Pupas" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.pupas}"/>
                 </p:column>  
                 
-                <p:column headerText="Total de Nós" filterBy="#{analiseentomologica.totalNos}" filterMatchMode="contains">
-                    <p:outputLabel value="#{analiseentomologica.totalNos}"/>
+                <p:column headerText="Total de Nós" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.totalNos}"/>
                 </p:column>  
                 
-                <p:column headerText="Brocados" filterBy="#{analiseentomologica.brocados}" filterMatchMode="contains">
-                    <p:outputLabel value="#{analiseentomologica.brocados}"/>
+                <p:column headerText="Brocados" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.brocados}"/>
                 </p:column>  
                 
-                <p:column headerText="Podridão Vermelha" filterBy="#{analiseentomologica.podridaoVermelha}" filterMatchMode="contains">
-                    <p:outputLabel value="#{analiseentomologica.podridaoVermelha}"/>
+                <p:column headerText="Podridão Vermelha" filterMatchMode="contains">
+                    <p:outputLabel value="#{ana.podridaoVermelha}"/>
                 </p:column>  
                 
                 <p:column headerText="Opções">

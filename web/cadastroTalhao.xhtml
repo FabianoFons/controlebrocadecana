@@ -19,13 +19,13 @@
                 <h:panelGrid columns="1" cellpadding="5"> 
                     
                     <h:outputLabel value="Fundos Agricolas"/>
-                    <p:selectOneMenu id="fa" value="#{cadastroTalhaoController.talhao.fundoAgricola}" required="true"
-                                     requiredMessage="Informe o Talhão"
+                    <p:selectOneMenu id="ta" value="#{cadastroTalhaoController.talhao.fundoAgricola}" required="true"
+                                     requiredMessage="Informe a Fazenda"
                                      converter="FazendaConverter"> 
-                        <f:selectItems value="#{cadastroTalhaoController.fas}" var="f" 
-                                       itemLabel="#{f.descricao}" itemValue="#{f}"/>                        
+                        <f:selectItems value="#{cadastroTalhaoController.fas}" var="t" 
+                                       itemLabel="#{t.descricao}" itemValue="#{t}"/>                        
                     </p:selectOneMenu>
-                    <p:message for="fa" />
+                    <p:message for="ta" />
                                         
                     <h:outputLabel value="Variedades"/>
                     <p:selectOneMenu id="va" value="#{cadastroTalhaoController.talhao.variedade}" required="true"
@@ -37,16 +37,21 @@
                     <p:message for="va" />
                     
                     <h:outputLabel value="Identificação"/>
-                    <p:inputText value="#{cadastroTalhaoController.talhao.identificacao}"/>
+                    <p:inputText value="#{cadastroTalhaoController.talhao.identificacao}" 
+                                 requiredMessage="Informe a Identificação"/>
 
                     <h:outputLabel value="Área"/>
-                    <p:inputText value="#{cadastroTalhaoController.talhao.area}"/>
+                    <p:inputText value="#{cadastroTalhaoController.talhao.area}"
+                                 requiredMessage="Informe a Área"/>
                     
                     <h:outputLabel value="Data"/>
-                    <p:calendar value="#{cadastroTalhaoController.talhao.data}"/>
+                    <p:calendar value="#{cadastroTalhaoController.talhao.data}"
+                                requiredMessage="Informe a Data"/>
                     
-                    <h:outputLabel value="Bloco"/>
-                    <p:inputText value="#{cadastroTalhaoController.talhao.bloco}"/>                    
+                    <h:outputLabel for="bloco" value="Bloco"/>
+                    <p:inputText value="#{cadastroTalhaoController.talhao.bloco}" 
+                                 requiredMessage="Informe o Bloco"/>  
+                    
                     
                 </h:panelGrid>
 

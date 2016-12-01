@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import model.AnaliseEntomologica;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Temporal;
 
 /**
  *

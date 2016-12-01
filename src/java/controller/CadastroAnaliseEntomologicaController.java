@@ -6,6 +6,7 @@
 package controller;
 
 import dao.DaoAnaliseEntomologica;
+import dao.DaoTalhao;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 import model.AnaliseEntomologica;
+import model.Talhao;
+
 
 
 /**
@@ -27,6 +30,7 @@ import model.AnaliseEntomologica;
 
 public class CadastroAnaliseEntomologicaController {
     private AnaliseEntomologica analiseEntomologica;
+    private Talhao talhao;
     private List<SelectItem> ana;
     private List<AnaliseEntomologica> lista;
     /**
@@ -43,16 +47,17 @@ public class CadastroAnaliseEntomologicaController {
         lista = daoAnaliseEntomologica.listar();
         
         ana = new ArrayList<SelectItem>();
-        DaoAnaliseEntomologica daoAnaliseEntomologica1 = new DaoAnaliseEntomologica();
-        List<AnaliseEntomologica> lista = daoAnaliseEntomologica.listar();
-        for(AnaliseEntomologica a: lista){
-            ana.add(new SelectItem(a,a.getTalhao().toString()));
+        DaoTalhao daoTalhao = new DaoTalhao();
+        List<Talhao> list = daoTalhao.listar();
+        for(Talhao t: list){
+            ana.add(new SelectItem(t,t.getIdentificacao()));
         }
+        
+        
+        /*analiseEntomologica = new AnaliseEntomologica();
+        DaoAnaliseEntomologica daoAnaliseEntomologica = new DaoAnaliseEntomologica();
+        lista = daoAnaliseEntomologica.listar();*/
     }
-
-    
-    
-   
 
     public AnaliseEntomologica getAnaliseEntomologica() {
         return analiseEntomologica;
@@ -60,6 +65,22 @@ public class CadastroAnaliseEntomologicaController {
 
     public void setAnaliseEntomologica(AnaliseEntomologica analiseEntomologica) {
         this.analiseEntomologica = analiseEntomologica;
+    }
+
+    public List<AnaliseEntomologica> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<AnaliseEntomologica> lista) {
+        this.lista = lista;
+    }
+
+    public Talhao getTalhao() {
+        return talhao;
+    }
+
+    public void setTalhao(Talhao talhao) {
+        this.talhao = talhao;
     }
 
     public List<SelectItem> getAna() {
@@ -72,17 +93,11 @@ public class CadastroAnaliseEntomologicaController {
     
     
 
-    public List<AnaliseEntomologica> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<AnaliseEntomologica> lista) {
-        this.lista = lista;
-    }
+   
     
-     public void salvar(){
+    public void salvar(){
         DaoAnaliseEntomologica daoAnaliseEntomologica = new DaoAnaliseEntomologica();
-        if (this.analiseEntomologica.getId() == null){
+        if (this.analiseEntomologica.getId()== null){
             daoAnaliseEntomologica.inserir(this.analiseEntomologica);
             this.lista.add(analiseEntomologica);
         }else{
@@ -93,7 +108,7 @@ public class CadastroAnaliseEntomologicaController {
         this.analiseEntomologica = new AnaliseEntomologica();
     }
 
-
+    
     
     public void excluir(AnaliseEntomologica analiseEntomologica){
         DaoAnaliseEntomologica daoAnaliseEntomologica = new DaoAnaliseEntomologica();
@@ -104,6 +119,7 @@ public class CadastroAnaliseEntomologicaController {
     public void alterar(AnaliseEntomologica analiseEntomologica){
         this.analiseEntomologica = analiseEntomologica;
     }
+    
     
     public void voltar(){
         try {

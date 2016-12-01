@@ -28,4 +28,19 @@ public class DaoTalhao extends Dao{
             return lista;
         }
     }
+     
+     public Object getById(Integer id){
+        Session session = dao.HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        Talhao talhao = null;
+        try{
+            talhao = (Talhao) session.get(Talhao.class, id);
+            t.commit();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            t.rollback();
+        }finally{
+            return talhao;
+        }
+    }     
 }
