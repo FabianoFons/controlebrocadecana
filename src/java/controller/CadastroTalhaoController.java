@@ -105,7 +105,7 @@ public class CadastroTalhaoController {
         try {
             util.Util.redirecionar("principal.xhtml");
         } catch (IOException ex) {
-            Logger.getLogger(CadastroFazendaController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroTalhaoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

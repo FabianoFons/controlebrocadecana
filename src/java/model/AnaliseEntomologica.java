@@ -5,6 +5,7 @@
  */
 package model;
 
+import com.google.gson.annotations.Expose;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,12 +34,19 @@ public class AnaliseEntomologica {
     private Date dataAnalise;
     private Float longitude;
     private Float latitude;
+    @Expose
     private Integer totalNos;
+    @Expose
     private Integer brocados;
+    @Expose
     private Integer podridaoVermelha;
+    @Expose
     private Integer brocaPequena;
+    @Expose
     private Integer brocaGrande;
+    @Expose
     private Integer crisalida;
+    @Expose
     private Integer pupas;
 
     public Integer getId() {

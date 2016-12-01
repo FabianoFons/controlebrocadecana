@@ -77,7 +77,7 @@ public class CadastroVariedadeController {
         try {
             util.Util.redirecionar("principal.xhtml");
         } catch (IOException ex) {
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroVariedadeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
